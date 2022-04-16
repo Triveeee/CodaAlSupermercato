@@ -1,15 +1,16 @@
 public class Carello extends Thread {
 
+    private Cassa cassa;
     private int numero;
-    private String nome;
 
-    public Carello(String nome){
-        numero = 0;
-        this.nome = nome;
+    public Carello(String nome ,Cassa cassa , int numero){
+        super(nome);
+
+        this.cassa = cassa;
     }
 
     @Override
     public void run() {
-        // TODO Auto-generated method stub
+
     }
 }
