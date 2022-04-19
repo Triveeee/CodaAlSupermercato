@@ -1,12 +1,12 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Cassa cassa =  new Cassa();
+        Market market =  new Market();
 
         int i = 0;
-        while(true){
-            new Carello("Carello_"+ i , cassa , i);
-            i++;
+        for(i = 0 ; i < 10 ; i++){
+            new Carello("Carello " + (i + 1) , market);
+            Thread.sleep(1000);
         }
     }
 }
