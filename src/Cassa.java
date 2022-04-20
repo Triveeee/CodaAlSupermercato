@@ -1,18 +1,20 @@
-public class Cassa {
-    
-    private String carello;
+public class Cassa extends Thread {
 
-    public Cassa(){
-        carello = null;
+    private Market market;
+    public Cassa(Market market){
+        this.market = market;
+        this.start();
     }
 
-    public int Random(int max , int min){
-        return((int) (Math.random() * (max - min) + 1) + min);
-    }
 
-    public void  controlla(){
-        while(carello == null){
-            
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+        while(true){
+
+                market.nextCart();
+            }
         }
-    }
+        
 }

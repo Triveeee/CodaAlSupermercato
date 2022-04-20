@@ -1,18 +1,18 @@
-import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class Market {
 
     private int n_lista;
     private int carello;
+    //private Vector <Carello> carelli;
 
     public Market(){
         carello = 0;
         n_lista = 0;
+        //carelli = new Vector <Carello> (0 , 1);
     }
     
-    public synchronized int EntraInCassa(long wait){
+    public synchronized int GoShoppingFor(long wait , Carello carello){
 
         try {
             Thread.sleep(wait);
@@ -21,7 +21,33 @@ public class Market {
             e.printStackTrace();
         }
         n_lista++;
-        System.out.println(Thread.currentThread().getName() + " ha finito la spesa " + n_lista);
+        System.out.println(carello.getName() + " ha finito la spesa e si mette in coda " + n_lista);
+        //carelli.add(carello);
+        notifyAll();
         return(n_lista);
     }
+
+    public synchronized void WaitCashDesk(int number){
+        while(carello != number){
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public synchronized void nextCart(){
+        while(n_lista == carello){
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        carello++;
+        notifyAll();
+}
 }

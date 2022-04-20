@@ -16,6 +16,8 @@ public class Carello extends Thread {
     public void run() {
             
             System.out.println(this.getName()  + " è entrato");
-            n_numero = market.EntraInCassa(wait);
+            n_numero = market.GoShoppingFor(wait , this);
+            market.WaitCashDesk(n_numero);
+            System.out.println(this.getName() + " entra in cassa");
     }
 }
