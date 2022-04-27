@@ -1,4 +1,4 @@
-import java.util.Vector;
+
 
 public class Market {
 
@@ -36,6 +36,7 @@ public class Market {
                 e.printStackTrace();
             }
         }
+        System.out.println(Thread.currentThread().getName() + " entra in cassa");
     }
 
     public synchronized void nextCart(){
@@ -47,7 +48,10 @@ public class Market {
                 e.printStackTrace();
             }
         }
+        System.out.println("cassa libera");
+        //System.out.println(carello);
         carello++;
+        //System.out.println(carello);
         notifyAll();
 }
 }

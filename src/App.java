@@ -6,9 +6,10 @@ public class App {
         int i = 0;
 
         new Cassa(market);
-        for(i = 0 ; i < 10 ; i++){
+        while(true){
             new Carello("Carello " + (i + 1) , market);
-            Thread.sleep(1000);
+            Thread.sleep((int) (Math.random() * ((10000 - 1000) + 1) + 1000));
+            i++;
         }
     }
 }
