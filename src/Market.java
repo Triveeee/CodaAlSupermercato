@@ -33,7 +33,7 @@ public class Market {
 
 
     //metodo sincronizzato per la classe thread carello
-    //carello entra in cassa se è il suo turno
+    //carello entra in cassa se è il suo turno altrimenti sta in attesa
     //corrisponde all fine del processo (carello)
 
     public synchronized void ReadyToExit(int number){
